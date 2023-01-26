@@ -11,9 +11,11 @@ const Post = () => {
 
     return (
         <>
-            <img src={default_blog_img} style={{ width: '100%' }}>
-            </img>
-            <Container maxWidth='xs'>
+            <Container maxWidth='md' disableGutters>
+                <img src={default_blog_img} style={{ width: '100%' }}>
+                </img>
+            </Container>
+            <Container maxWidth='md'>
                 <Box marginBottom={1}>
                     {/* <Avatar
                     sx={{ position: 'fixed', zIndex: '10', bottom: '5%', right: '5%', width: '3rem', height: '3rem', backgroundColor: 'theme.palette.primary' }}>
