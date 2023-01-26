@@ -9,6 +9,8 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 const PostCard = (props) => {
+    console.log("props called")
+    console.log(props)
     return (
         <Card component={Link} to='/post' sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
             <CardMedia
@@ -21,7 +23,7 @@ const PostCard = (props) => {
             <Box sx={{ padding: '0.1rem', display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
 
-                    title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eius!"
+                    title={props["Title"]}
                     subheader=""
                     // title={props.blog.blogTitle}
                     // subheader={props.blog.userId}
@@ -32,7 +34,7 @@ const PostCard = (props) => {
 
                 <CardContent >
                     <Typography variant='caption'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus minus pariatur laborum rem incidunt recusandae autem reprehenderit voluptatum eaque praesentium.
+                        {props["Description"]}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         Sept 24, 2022
