@@ -7,6 +7,8 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 const Post = () => {
     return (
         <>
+            <img src={default_blog_img} style={{ width: '100%' }}>
+            </img>
             <Container maxWidth='xs'>
                 <Box marginBottom={1}>
                     {/* <Avatar
@@ -18,8 +20,6 @@ const Post = () => {
                     <Typography gutterBottom variant='h6' fontWeight='bold'>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, unde?
                     </Typography>
-                    <img src={default_blog_img} style={{ width: '100%' }}>
-                    </img>
                     <Button variant='contained' fullWidth>
                         Download PDF
                     </Button>
