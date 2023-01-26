@@ -1,10 +1,14 @@
-import { DocumentScanner, FileDownload } from '@mui/icons-material'
+import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <img src={default_blog_img} style={{ width: '100%' }}>
@@ -17,11 +21,11 @@ const Post = () => {
                         <FileDownload fontSize='large'></FileDownload>
                     </Button>
                 </Avatar> */}
-                    <Typography gutterBottom variant='h6' fontWeight='bold'>
+                    <Typography gutterBottom variant='h5' fontWeight='bold'>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, unde?
                     </Typography>
                     <Button variant='contained' fullWidth>
-                        Download PDF
+                        Document<FileDownload fontSize='small' />
                     </Button>
                 </Box>
                 <Box>

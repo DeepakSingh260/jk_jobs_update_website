@@ -14,12 +14,10 @@ function App() {
       <HashRouter>
         <CssBaseline />
         <Navbar></Navbar>
-        <ScrollToTop>
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/:post' element={<Post />}></Route>
-          </Routes>
-        </ScrollToTop>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/:post' element={<Post />}></Route>
+        </Routes>
       </HashRouter>
     </div>
   )
