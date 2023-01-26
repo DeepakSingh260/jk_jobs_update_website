@@ -1,5 +1,6 @@
 import { Avatar, Card, CardContent, CardHeader, CardMedia, Typography, Box, CardActions, Button } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 
@@ -11,15 +12,13 @@ const PostCard = (props) => {
     console.log("props called")
     console.log(props)
     return (
-        <Card sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+        <Card component={Link} to='/post' sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
             <CardMedia
                 component='img'
                 height='200'
-                image={props["Link"]}
-                // image={props.blog.blogImg ? props.blog.blogImg : default_blog_img}
-                sx={{
-                    objectFit: 'cover',
-                }}
+                image={default_blog_img}
+            // image={props.blog.blogImg ? props.blog.blogImg : default_blog_img}
+
             />
             <Box sx={{ padding: '0.1rem', display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
@@ -37,7 +36,7 @@ const PostCard = (props) => {
                     <Typography variant='caption'>
                         {props["Description"]}
                     </Typography>
-                    <Typography variant='caption' color='grey' display='block'>
+                    <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         Sept 24, 2022
                     </Typography>
                 </CardContent>

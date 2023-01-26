@@ -1,13 +1,21 @@
-import { DocumentScanner, FileDownload } from '@mui/icons-material'
+import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
-            <Container maxWidth='xs'>
+            <Container maxWidth='md' disableGutters>
+                <img src={default_blog_img} style={{ width: '100%' }}>
+                </img>
+            </Container>
+            <Container maxWidth='md'>
                 <Box marginBottom={1}>
                     {/* <Avatar
                     sx={{ position: 'fixed', zIndex: '10', bottom: '5%', right: '5%', width: '3rem', height: '3rem', backgroundColor: 'theme.palette.primary' }}>
@@ -15,13 +23,11 @@ const Post = () => {
                         <FileDownload fontSize='large'></FileDownload>
                     </Button>
                 </Avatar> */}
-                    <Typography gutterBottom variant='h6' fontWeight='bold'>
+                    <Typography gutterBottom variant='h5' fontWeight='bold'>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, unde?
                     </Typography>
-                    <img src={default_blog_img} style={{ width: '100%' }}>
-                    </img>
                     <Button variant='contained' fullWidth>
-                        Download PDF
+                        Document<FileDownload fontSize='small' />
                     </Button>
                 </Box>
                 <Box>
