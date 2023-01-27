@@ -15,7 +15,7 @@ const Home = () => {
         
         onValue(reference,(snapshot)=>{
             snapshot.forEach(child=>{
-                tempList.push(child.val())
+                tempList.push([child.val().Heading ,child.val().Description,child.val().Link ])
             })
 
         })
@@ -30,12 +30,13 @@ const Home = () => {
             const date_st =  String(date.getMonth() + 1).padStart(2, '0')+":"+ date.getDate() +":" +  +String(date.getFullYear()).substring(2,4)
             date.setDate(date.getDate() - 1)
             await get_dates_update(date_st)
+            console.log("tempList",tempList)
             setJobList(tempList)
-            break
+            console.log(jobs_update_list)
+            // break
         }
-        console.log("jobs_update_list",jobs_update_list)
-        console.log("tempList",tempList)
-
+        
+        
     }
     update_list()
 
