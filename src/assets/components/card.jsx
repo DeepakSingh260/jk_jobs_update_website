@@ -9,8 +9,7 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 const PostCard = (props) => {
-    console.log("props called")
-    console.log(props["props"]["updates"][0])
+    
    
    
     return (

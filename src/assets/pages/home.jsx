@@ -2,7 +2,7 @@ import { Box, Container, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import PostCard from '../components/card'
 import app from '../components/firebase'
-import {getDatabase , ref , onValue, update} from "firebase/database"
+import {getDatabase , ref , onValue} from "firebase/database"
 
 const Home = () => {
 
@@ -10,18 +10,7 @@ const Home = () => {
     const database = getDatabase(app)
     let tempList = []
     useEffect(()=>{
-    const get_dates_update=async(date)=>{
-        const reference  = ref(database,"JobUpdates/"+date)
-        
-        onValue(reference,(snapshot)=>{
-            snapshot.forEach(child=>{
-                tempList.push([child.val().Heading ,child.val().Description,child.val().Link ])
-            })
-
-        })
-
-        
-    }
+ 
     const update_list = async()=>{
 
         let date = new Date()
@@ -29,16 +18,23 @@ const Home = () => {
         while ( date>lastDate){
             const date_st =  String(date.getMonth() + 1).padStart(2, '0')+":"+ date.getDate() +":" +  +String(date.getFullYear()).substring(2,4)
             date.setDate(date.getDate() - 1)
-            await get_dates_update(date_st)
-            console.log("tempList",tempList)
-            setJobList(tempList)
-            console.log(jobs_update_list)
-            // break
-        }
+            const reference  = ref(database,"JobUpdates/"+date_st)
         
-        
+            const listener = onValue(reference,(snapshot)=>{
+                snapshot.forEach(child=>{
+                    jobs_update_list.push([child.val().Heading ,child.val().Description,child.val().Link ])
+                    
+                })
+                
+                setJobList([...jobs_update_list])
+                console.log(jobs_update_list)
+            });
+           
+            
     }
-    update_list()
+    
+}
+update_list()
 
 },[])
 
@@ -46,7 +42,7 @@ const Home = () => {
         <>
             <Container maxWidth='md' disableGutters sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', }}>
                 {/* <Typography variant='h5' fontWeight='bolder' textAlign='left'>Job Updates</Typography> */}
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     {
                         jobs_update_list.map((updates)=>
                             (
