@@ -9,15 +9,18 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 const PostCard = (props) => {
-    
-   
-   
+
+
+
     return (
         <Card component={Link} to='/post' sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
             <CardMedia
                 component='img'
                 height='200'
                 image={props["props"]["updates"][2]}
+                sx={{
+                    objectFit: 'contain'
+                }}
             // image={props.blog.blogImg ? props.blog.blogImg : default_blog_img}
 
             />
