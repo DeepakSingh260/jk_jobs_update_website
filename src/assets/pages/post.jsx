@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
-const Post = () => {
+const Post = (props) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -12,7 +12,7 @@ const Post = () => {
     return (
         <>
             <Container maxWidth='md' disableGutters>
-                <img src={default_blog_img} style={{ width: '100%' }}>
+                <img src={props[2]} style={{ width: '100%' }}>
                 </img>
             </Container>
             <Container maxWidth='md'>
@@ -24,7 +24,7 @@ const Post = () => {
                     </Button>
                 </Avatar> */}
                     <Typography gutterBottom variant='h5' fontWeight='bold'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, unde?
+                        {props[0]}
                     </Typography>
                     <Button variant='contained' fullWidth>
                         Document<FileDownload fontSize='small' />
@@ -32,7 +32,7 @@ const Post = () => {
                 </Box>
                 <Box>
                     <Typography variant='body1'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error blanditiis corrupti aliquid, maxime assumenda quibusdam magni? Distinctio, maxime adipisci quaerat necessitatibus reprehenderit nam totam id placeat eveniet repudiandae harum architecto ut ipsum similique quibusdam neque tempora delectus debitis, quis, ab fugiat illum itaque! Dolor ut maiores impedit earum eum quam ipsum quia dolorem quisquam veniam vitae adipisci aliquam quidem eveniet non nostrum nisi dignissimos commodi repudiandae ipsa aliquid, recusandae quae reiciendis! Earum, sint. Consequuntur enim repellendus saepe dolore, rem eos alias! Facere laborum nihil, vero non adipisci veniam nostrum minima aspernatur consectetur officiis earum dolorum perspiciatis ducimus eos commodi aliquam.
+                        {props[1]}
                     </Typography>
                 </Box>
             </Container>

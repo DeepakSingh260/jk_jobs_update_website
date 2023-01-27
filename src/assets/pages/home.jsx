@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import PostCard from '../components/card'
 import app from '../components/firebase'
 import { getDatabase, ref, onValue } from "firebase/database"
-import { HorizontalRule, HorizontalRuleOutlined } from '@mui/icons-material'
+import { LoadingAnim } from '../components/circleLoadingAnim'
+
+
 
 const Home = () => {
 
     const [jobList, setJobList] = useState([])
     const database = getDatabase(app)
-    let tempList = []
+
     useEffect(() => {
 
         const update_list = async () => {
@@ -23,12 +25,14 @@ const Home = () => {
 
                 const listener = onValue(reference, (snapshot) => {
                     snapshot.forEach(child => {
-                        jobList.push([child.val().Heading, child.val().Description, child.val().Link])
+                        // jobList.push([child.val().Heading, child.val().Description, child.val().Link])
+                        // console.log(child.val())
+                        setJobList((jobList) => [...jobList, { heading: child.val().Heading, desc: child.val().Description, link: child.val().Link }])
 
                     })
 
-                    setJobList([...jobList])
-                    // console.log(jobList)
+                    // setJobList([...jobList])
+                    console.log(jobList)
                 });
 
 
@@ -41,19 +45,19 @@ const Home = () => {
 
     return (
         <>
-            <Container maxWidth='md' disableGutters sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', }}>
+            <Container maxWidth='md' disableGutters>
                 {/* <Typography variant='h5' fontWeight='bolder' textAlign='left'>Job Updates</Typography> */}
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     {
-                        jobList.map((updates, idx) => {
+                        jobList.length > 0 ? jobList.map((updates, idx) => {
                             return (
                                 <>
-                                    <PostCard key={idx} props={{ updates }} />
+                                    <PostCard key={idx} props={updates} />
                                     <hr></hr>
                                 </>
                             )
                         }
-                        )
+                        ) : <LoadingAnim />
                     }
                 </Box>
             </Container>

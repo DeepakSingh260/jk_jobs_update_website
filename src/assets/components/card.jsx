@@ -8,7 +8,7 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 
-const PostCard = (props) => {
+const PostCard = ({ props }) => {
 
 
 
@@ -17,20 +17,18 @@ const PostCard = (props) => {
             <CardMedia
                 component='img'
                 height='200'
-                image={props["props"]["updates"][2]}
+                image={props.link}
                 sx={{
                     objectFit: 'contain'
                 }}
-            // image={props.blog.blogImg ? props.blog.blogImg : default_blog_img}
 
             />
             <Box sx={{ padding: '0.1rem', display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
 
-                    title={props["props"]["updates"][0]}
+                    title={props.heading}
                     subheader=""
-                    // title={props.blog.blogTitle}
-                    // subheader={props.blog.userId}
+
                     sx={{
                         paddingBottom: '0px'
                     }}
@@ -38,7 +36,7 @@ const PostCard = (props) => {
 
                 <CardContent >
                     <Typography variant='caption'>
-                        {props["props"]["updates"][1]}
+                        {props.desc}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         Sept 24, 2022
