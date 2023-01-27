@@ -10,20 +10,22 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 const PostCard = (props) => {
     console.log("props called")
-    console.log(props)
+    console.log(props["props"]["updates"][0])
+   
+   
     return (
         <Card component={Link} to='/post' sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
             <CardMedia
                 component='img'
                 height='200'
-                image={default_blog_img}
+                image={props["props"]["updates"][2]}
             // image={props.blog.blogImg ? props.blog.blogImg : default_blog_img}
 
             />
             <Box sx={{ padding: '0.1rem', display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
 
-                    title={props["Title"]}
+                    title={props["props"]["updates"][0]}
                     subheader=""
                     // title={props.blog.blogTitle}
                     // subheader={props.blog.userId}
@@ -34,7 +36,7 @@ const PostCard = (props) => {
 
                 <CardContent >
                     <Typography variant='caption'>
-                        {props["Description"]}
+                        {props["props"]["updates"][1]}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         Sept 24, 2022
