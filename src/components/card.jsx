@@ -39,7 +39,7 @@ const PostCard = ({ props, id }) => {
                         {props.desc}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
-                        {props.date}
+                        {new Date(props.date).toDateString()}
                     </Typography>
                 </CardContent>
             </Box>
