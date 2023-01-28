@@ -39,7 +39,7 @@ const PostCard = ({ props, id }) => {
                         {props.desc}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
-                        Sept 24, 2022
+                        {props.date}
                     </Typography>
                 </CardContent>
             </Box>
