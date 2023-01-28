@@ -20,7 +20,7 @@ const Home = () => {
                         jobList.length > 0 ? jobList.map((updates, idx) => {
                             return (
                                 <React.Fragment key={idx} >
-                                    <PostCard key={idx} props={updates} />
+                                    <PostCard props={updates} id={idx} />
                                     <hr></hr>
                                 </React.Fragment>
                             )

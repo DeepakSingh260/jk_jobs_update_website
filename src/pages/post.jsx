@@ -1,10 +1,24 @@
 import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import ReactLinkify from 'react-linkify'
+import { useParams } from 'react-router-dom'
+import { AppContext } from '../context/appContext'
 
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = (props) => {
+    const params = useParams()
+
+    const { id } = params
+
+    const context = useContext(AppContext)
+    const { jobList } = context
+
+    const job = jobList[id]
+
+
+    //scroll to top on load
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -12,27 +26,23 @@ const Post = (props) => {
     return (
         <>
             <Container maxWidth='md' disableGutters>
-                <img src={props[2]} style={{ width: '100%' }}>
+                <img src={job.link} style={{ width: '100%' }}>
                 </img>
             </Container>
             <Container maxWidth='md'>
                 <Box marginBottom={1}>
-                    {/* <Avatar
-                    sx={{ position: 'fixed', zIndex: '10', bottom: '5%', right: '5%', width: '3rem', height: '3rem', backgroundColor: 'theme.palette.primary' }}>
-                    <Button size='medium' >
-                        <FileDownload fontSize='large'></FileDownload>
-                    </Button>
-                </Avatar> */}
                     <Typography gutterBottom variant='h5' fontWeight='bold'>
-                        {props[0]}
+                        {job.heading}
                     </Typography>
-                    <Button variant='contained' fullWidth>
+                    {/* <Button variant='contained' fullWidth>
                         Document<FileDownload fontSize='small' />
-                    </Button>
+                    </Button> */}
                 </Box>
                 <Box>
-                    <Typography variant='body1'>
-                        {props[1]}
+                    <Typography variant='body1' sx={{ wordWrap: 'normal', overflowX: 'hidden' }}>
+                        <ReactLinkify>
+                            {job.desc}
+                        </ReactLinkify>
                     </Typography>
                 </Box>
             </Container>

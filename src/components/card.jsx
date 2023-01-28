@@ -8,12 +8,12 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 
-const PostCard = ({ props }) => {
+const PostCard = ({ props, id }) => {
 
 
 
     return (
-        <Card component={Link} to='/post' sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
+        <Card component={Link} to={'/post/' + id} sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
             <CardMedia
                 component='img'
                 height='200'

@@ -19,7 +19,7 @@ function App() {
           <Navbar></Navbar>
           <Routes>
             <Route path='/' element={<Home />}></Route>
-            <Route path='/post/:post' element={<Post />}></Route>
+            <Route path='/post/:id' element={<Post />}></Route>
             <Route path='/search' element={<Search />}></Route>
           </Routes>
         </AppProvider>
