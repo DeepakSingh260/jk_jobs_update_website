@@ -34,13 +34,17 @@ const Post = (props) => {
                     <Typography gutterBottom variant='h5' fontWeight='bold'>
                         {job.heading}
                     </Typography>
-                    {/* <Button variant='contained' fullWidth>
-                        Document<FileDownload fontSize='small' />
-                    </Button> */}
+                    <Button variant='contained' LinkComponent='a' href={job.link} target='_blank' fullWidth>
+                        Donwload Image<FileDownload fontSize='small' />
+                    </Button>
                 </Box>
                 <Box>
                     <Typography variant='body1' sx={{ wordWrap: 'normal', overflowX: 'hidden' }}>
-                        <ReactLinkify>
+                        <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
+                            <a target="blank" href={decoratedHref} key={key}>
+                                {decoratedText}
+                            </a>
+                        )}>
                             {job.desc}
                         </ReactLinkify>
                     </Typography>

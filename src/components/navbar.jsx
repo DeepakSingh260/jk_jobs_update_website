@@ -1,4 +1,4 @@
-import { History, Home, HouseOutlined, RecentActors, Search, Settings } from '@mui/icons-material'
+import { ContactPage, History, Home, HouseOutlined, InfoOutlined, InfoRounded, Instagram, More, RecentActors, Search, Settings } from '@mui/icons-material'
 import { AppBar, Button, IconButton, Toolbar } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -14,8 +14,8 @@ const Navbar = () => {
                     <IconButton LinkComponent={Link} to='/search'>
                         <Search fontSize='large'></Search>
                     </IconButton>
-                    <IconButton>
-                        <Settings fontSize='large'></Settings>
+                    <IconButton LinkComponent={Link} to='/about'>
+                        <InfoOutlined fontSize='large'></InfoOutlined>
                     </IconButton>
                 </Toolbar>
             </AppBar>

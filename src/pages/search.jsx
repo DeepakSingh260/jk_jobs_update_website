@@ -48,10 +48,10 @@ const Search = () => {
                     {
                         filteredUpdates.map((updates, idx) => {
                             return (
-                                <>
-                                    <PostCard key={idx} props={updates} />
+                                <React.Fragment key={idx} >
+                                    <PostCard props={updates} id={idx} />
                                     <hr></hr>
-                                </>
+                                </React.Fragment >
                             )
                         }
                         )

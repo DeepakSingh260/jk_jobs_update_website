@@ -8,6 +8,7 @@ import Post from './pages/post'
 import './App.css'
 import { AppProvider } from './context/appProvider'
 import Search from './pages/search'
+import About from './pages/about'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             <Route path='/post/:id' element={<Post />}></Route>
             <Route path='/search' element={<Search />}></Route>
+            <Route path='/about' element={<About />}></Route>
           </Routes>
         </AppProvider>
       </HashRouter>
