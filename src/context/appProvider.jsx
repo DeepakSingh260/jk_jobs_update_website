@@ -8,8 +8,10 @@ export const AppProvider = ({ children }) => {
     const [jobList, setJobList] = useState([])
     const database = getDatabase(app)
 
+
     useEffect(() => {
         const update_list = async () => {
+            const temp = []
             let date = new Date()
             const lastDate = new Date("08/01/2022")
             while (date > lastDate) {
@@ -17,16 +19,16 @@ export const AppProvider = ({ children }) => {
                 date.setDate(date.getDate() - 1)
                 const reference = ref(database, "JobUpdates/" + date_st)
 
-                const listener = onValue(reference, (snapshot) => {
+                onValue(reference, (snapshot) => {
                     snapshot.forEach(child => {
                         // jobList.push([child.val().Heading, child.val().Description, child.val().Link])
                         // console.log(child.val())
-                        setJobList((jobList) => [...jobList, { heading: child.val().Heading, desc: child.val().Description, link: child.val().Link }])
+                        // setJobList((jobList) => [...jobList, { heading: child.val().Heading, desc: child.val().Description, link: child.val().Link }])
+                        temp.push({ heading: child.val().Heading, desc: child.val().Description, link: child.val().Link })
 
                     })
 
-                    // setJobList([...jobList])
-                    console.log(jobList)
+                    setJobList([...temp])
                 });
 
 

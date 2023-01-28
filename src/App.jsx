@@ -7,6 +7,7 @@ import Home from './pages/home'
 import Post from './pages/post'
 import './App.css'
 import { AppProvider } from './context/appProvider'
+import Search from './pages/search'
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
           <Navbar></Navbar>
           <Routes>
             <Route path='/' element={<Home />}></Route>
-            <Route path='/:post' element={<Post />}></Route>
+            <Route path='/post/:post' element={<Post />}></Route>
+            <Route path='/search' element={<Search />}></Route>
           </Routes>
         </AppProvider>
       </HashRouter>

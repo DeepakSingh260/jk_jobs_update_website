@@ -1,8 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import PostCard from '../components/card'
-import app from '../components/firebase'
-import { getDatabase, ref, onValue } from "firebase/database"
 import { LoadingAnim } from '../components/circleLoadingAnim'
 import { AppContext } from '../context/appContext'
 
@@ -21,10 +19,10 @@ const Home = () => {
                     {
                         jobList.length > 0 ? jobList.map((updates, idx) => {
                             return (
-                                <>
+                                <React.Fragment key={idx} >
                                     <PostCard key={idx} props={updates} />
                                     <hr></hr>
-                                </>
+                                </React.Fragment>
                             )
                         }
                         ) : <LoadingAnim />
