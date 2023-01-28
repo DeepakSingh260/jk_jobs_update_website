@@ -1,6 +1,7 @@
 import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
 import React, { useContext, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 import ReactLinkify from 'react-linkify'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../context/appContext'
@@ -25,6 +26,10 @@ const Post = (props) => {
 
     return (
         <>
+            <Helmet>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343947924618217"
+                    crossorigin="anonymous"></script>
+            </Helmet>
             <Container maxWidth='md' disableGutters>
                 <img src={job.link} style={{ width: '100%' }}>
                 </img>

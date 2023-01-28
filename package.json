@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-adsense-ads": "^3.5.1",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-linkify": "^1.0.0-alpha",
     "react-router-dom": "^6.7.0"
   },
