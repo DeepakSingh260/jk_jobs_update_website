@@ -1,6 +1,6 @@
 import { CssBaseline } from '@mui/material'
 import { useState } from 'react'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/navbar'
 import ScrollToTop from './components/scrolltotop'
 import Home from './pages/home'
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <AppProvider>
           <CssBaseline />
           <Navbar></Navbar>
@@ -25,7 +25,7 @@ function App() {
             <Route path='/about' element={<About />}></Route>
           </Routes>
         </AppProvider>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   )
 }
