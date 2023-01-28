@@ -1,6 +1,6 @@
 import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import ReactLinkify from 'react-linkify'
 import { useParams } from 'react-router-dom'
@@ -9,6 +9,7 @@ import { AppContext } from '../context/appContext'
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = (props) => {
+    const [job, setJob] = useState({ heading: '', link: '', desc: '' })
     const params = useParams()
 
     const { id } = params
@@ -16,13 +17,13 @@ const Post = (props) => {
     const context = useContext(AppContext)
     const { jobList } = context
 
-    const job = jobList[id]
-
-
     //scroll to top on load
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+        if (jobList.length > 0) {
+            setJob(jobList[id])
+        }
+    }, [jobList])
 
     return (
         <>

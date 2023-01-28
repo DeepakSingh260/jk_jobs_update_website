@@ -23,11 +23,14 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const res = jobList.filter((job) => {
-            return job.heading.includes(query.toUpperCase())
+        let temp = []
+        jobList.forEach((job, idx) => {
+            if (job.heading.toUpperCase().includes(query.toUpperCase())) {
+                temp.push({ ...job, idx })
+            }
         })
 
-        setFilteredUpdates(res)
+        setFilteredUpdates(temp)
     }
 
     return (
@@ -46,10 +49,10 @@ const Search = () => {
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     {
-                        filteredUpdates.map((updates, idx) => {
+                        filteredUpdates.map((updates) => {
                             return (
-                                <React.Fragment key={idx} >
-                                    <PostCard props={updates} id={idx} />
+                                <React.Fragment key={updates.idx} >
+                                    <PostCard props={updates} id={updates.idx} />
                                     <hr></hr>
                                 </React.Fragment >
                             )
