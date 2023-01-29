@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCard from '../components/card'
 import { LoadingAnim } from '../components/circleLoadingAnim'
 import { AppContext } from '../context/appContext'
@@ -10,7 +11,7 @@ import { AppContext } from '../context/appContext'
 const Home = () => {
 
     const context = useContext(AppContext)
-    const { jobList } = context
+    const { jobList, jobListSmall, loadMoreJobs } = context
 
     return (
         <>
@@ -18,21 +19,30 @@ const Home = () => {
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343947924618217"
                     crossorigin="anonymous"></script>
             </Helmet>
-            <Container maxWidth='md' disableGutters>
+            <Container maxWidth='md' disableGutters >
                 {/* <Typography variant='h5' fontWeight='bolder' textAlign='left'>Job Updates</Typography> */}
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    {
-                        jobList.length > 0 ? jobList.map((updates, idx) => {
-                            return (
-                                <React.Fragment key={idx} >
-                                    <PostCard props={updates} id={idx} />
-                                    <hr></hr>
-                                </React.Fragment>
+                <InfiniteScroll
+                    dataLength={jobListSmall.length}
+                    next={loadMoreJobs}
+                    hasMore={true}
+                    loader={<LoadingAnim />}
+
+                >
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+
+                        {
+                            jobListSmall.map((updates, idx) => {
+                                return (
+                                    <React.Fragment key={idx} >
+                                        <PostCard props={updates} id={idx} />
+                                        <hr></hr>
+                                    </React.Fragment>
+                                )
+                            }
                             )
                         }
-                        ) : <LoadingAnim />
-                    }
-                </Box>
+                    </Box>
+                </InfiniteScroll>
             </Container>
         </>
     )

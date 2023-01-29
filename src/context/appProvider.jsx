@@ -1,11 +1,13 @@
 import app from "../components/firebase"
 import { getDatabase, ref, onValue } from "firebase/database"
 import { AppContext } from "./appContext"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-
+const jobsToLoad = 10
 export const AppProvider = ({ children }) => {
     const [jobList, setJobList] = useState([])
+
+    const [jobListSmall, setJobListSmall] = useState([])
     const database = getDatabase(app)
 
 
@@ -30,18 +32,23 @@ export const AppProvider = ({ children }) => {
                     })
 
                     setJobList([...temp])
+                    setJobListSmall([...temp].slice(0, jobsToLoad))
                 });
-
 
             }
 
         }
         update_list()
-
     }, [])
 
+    const loadMoreJobs = () => {
+        let endIndex = Math.min((jobListSmall.length + jobsToLoad), jobList.length)
+        setJobListSmall((prev) => prev.concat(jobList.slice(jobListSmall.length, endIndex)))
+        console.log(jobList)
+    }
+
     return (
-        <AppContext.Provider value={{ jobList, setJobList }}>
+        <AppContext.Provider value={{ jobList, setJobList, jobListSmall, loadMoreJobs }}>
             {children}
         </AppContext.Provider >
     )
