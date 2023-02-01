@@ -15,6 +15,7 @@
     "@mui/material": "^5.11.6",
     "firebase": "^9.16.0",
     "react": "^18.2.0",
+    "react-adsense": "^0.1.0",
     "react-adsense-ads": "^3.5.1",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",

@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCard from '../components/card'
 import { LoadingAnim } from '../components/circleLoadingAnim'
 import { AppContext } from '../context/appContext'
-
+import Adsense from 'react-adsense'
 
 
 const Home = () => {
@@ -13,14 +13,27 @@ const Home = () => {
     const context = useContext(AppContext)
     const { jobList, jobListSmall, loadMoreJobs } = context
 
+
     return (
         <>
             <Helmet>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343947924618217"
-                    crossorigin="anonymous"></script>
+                
+                {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343947924618217"
+                    crossorigin="anonymous"></script> */}
+                
             </Helmet>
+        
             <Container maxWidth='md' disableGutters >
                 {/* <Typography variant='h5' fontWeight='bolder' textAlign='left'>Job Updates</Typography> */}
+                <Adsense.Google
+                style={{ display: 'block' }}
+                client="ca-pub-9343947924618217"
+                slot="2286135410"
+                 format='auto'
+                responsive='true'
+                layoutKey='-gw-1+2a-9x+5c'
+                />
+                <br></br>
                 <InfiniteScroll
                     dataLength={jobListSmall.length}
                     next={loadMoreJobs}
@@ -36,7 +49,10 @@ const Home = () => {
                                     <React.Fragment key={idx} >
                                         <PostCard props={updates} id={idx} />
                                         <hr></hr>
+                                        
+                                        
                                     </React.Fragment>
+                                    
                                 )
                             }
                             )
