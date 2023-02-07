@@ -23,7 +23,7 @@ const About = () => {
                 </Box>
                 <Box>
                     <Typography variant='body1' fontWeight='bolder' sx={{ mt: '2rem' }}>
-                        Follow Us At
+                        Follow Us On
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
                         <IconButton LinkComponent='a' target='_blank' href='https://www.instagram.com/jkjobsupdateofficial'>
