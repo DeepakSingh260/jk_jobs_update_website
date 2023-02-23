@@ -36,7 +36,6 @@ const Search = () => {
     return (
         <>
             <Container maxWidth='md' disableGutters>
-                {/* <Typography variant='h5' fontWeight='bolder' textAlign='left'>Job Updates</Typography> */}
                 <Box component='form' onSubmit={handleSubmit} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <TextField
                         label='Search'

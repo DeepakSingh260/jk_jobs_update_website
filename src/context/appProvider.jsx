@@ -28,7 +28,7 @@ export const AppProvider = ({ children }) => {
                         // jobList.push([child.val().Heading, child.val().Description, child.val().Link])
                         // console.log(child.val())
                         // setJobList((jobList) => [...jobList, { heading: child.val().Heading, desc: child.val().Description, link: child.val().Link }])
-                        temp.push({ heading: child.val().Heading, desc: child.val().Description, link: child.val().Link, date: date_st1})
+                        temp.push({ heading: child.val().Heading, desc: child.val().Description, link: child.val().Link, pdf: child.val().PdfUrl, date: date_st1 })
 
                     })
 

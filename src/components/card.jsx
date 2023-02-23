@@ -13,7 +13,7 @@ const PostCard = ({ props, id }) => {
 
 
     return (
-        <Card component={Link} to={'/post/' + id} sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none' }}>
+        <Card component={Link} to={'/post/' + id} sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none', }}>
             <CardMedia
                 component='img'
                 height='200'
@@ -36,16 +36,13 @@ const PostCard = ({ props, id }) => {
 
                 <CardContent >
                     <Typography variant='caption'>
-                        {props.desc}
+                        {props.desc.length > 150 ? props.desc.slice(0, 150) : props.desc}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         {new Date(props.date).toDateString()}
                     </Typography>
                 </CardContent>
             </Box>
-            <CardActions>
-                {/* <Button component={Link} to={'/editblog/' + props.blog['_id']}>Edit</Button> */}
-            </CardActions>
         </Card>
     )
 }

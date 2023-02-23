@@ -1,8 +1,6 @@
 import { CssBaseline } from '@mui/material'
-import { useState } from 'react'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/navbar'
-import ScrollToTop from './components/scrolltotop'
 import Home from './pages/home'
 import Post from './pages/post'
 import './App.css'

@@ -9,7 +9,7 @@ import { AppContext } from '../context/appContext'
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = (props) => {
-    const [job, setJob] = useState({ heading: '', link: '', desc: '' })
+    const [job, setJob] = useState({ heading: '', link: '', desc: '', pdf: '' })
     const params = useParams()
 
     const { id } = params
@@ -27,10 +27,6 @@ const Post = (props) => {
 
     return (
         <>
-            <Helmet>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343947924618217"
-                    crossorigin="anonymous"></script>
-            </Helmet>
             <Container maxWidth='md' disableGutters>
                 <img src={job.link} style={{ width: '100%' }}>
                 </img>
@@ -54,6 +50,13 @@ const Post = (props) => {
                             {job.desc}
                         </ReactLinkify>
                     </Typography>
+                    {
+                        job.pdf ?
+                            <Button variant='contained' LinkComponent='a' href={job.pdf} target='_blank' fullWidth>
+                                View PDF<FileDownload fontSize='small' />
+                            </Button>
+                            : null
+                    }
                 </Box>
             </Container>
         </>
