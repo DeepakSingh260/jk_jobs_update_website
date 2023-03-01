@@ -1,4 +1,4 @@
-import { DocumentScanner, DownloadForOffline, DownloadOutlined, FileDownload } from '@mui/icons-material'
+import { FileDownload } from '@mui/icons-material'
 import { Avatar, Box, Button, Container, CssBaseline, Typography } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
@@ -9,7 +9,7 @@ import { AppContext } from '../context/appContext'
 const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 
 const Post = (props) => {
-    const [job, setJob] = useState({ heading: '', link: '', desc: '', pdf: '' })
+    const [job, setJob] = useState({ heading: '', link: '', desc: '', })
     const params = useParams()
 
     const { id } = params
@@ -22,6 +22,7 @@ const Post = (props) => {
         window.scrollTo(0, 0)
         if (jobList.length > 0) {
             setJob(jobList[id])
+            console.log(jobList[id])
         }
     }, [jobList])
 
@@ -51,11 +52,10 @@ const Post = (props) => {
                         </ReactLinkify>
                     </Typography>
                     {
-                        job.pdf ?
-                            <Button variant='contained' LinkComponent='a' href={job.pdf} target='_blank' fullWidth>
-                                View PDF<FileDownload fontSize='small' />
-                            </Button>
-                            : null
+                        job.pdf !== null && job.pdf !== 'null' && (<Button variant='contained' href={job.pdf} target='_blank' fullWidth>
+                            View PDF<FileDownload fontSize='small' />
+                        </Button>)
+
                     }
                 </Box>
             </Container>
