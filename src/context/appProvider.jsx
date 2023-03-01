@@ -18,13 +18,15 @@ export const AppProvider = ({ children }) => {
             const lastDate = new Date("08/01/2022")
 
             while (date > lastDate) {
-                const date_st = String(date.getMonth() + 1).padStart(2, '0') + ":" + date.getDate() + ":" + +String(date.getFullYear()).substring(2, 4)
+                const date_st = String(date.getMonth() + 1).padStart(2, '0') + ":" + String(date.getDate()).padStart(2, '0')+ ":" + +String(date.getFullYear()).substring(2, 4)
+                // console.log(date_st)
                 const reference = ref(database, "JobUpdates/" + date_st)
-                date.setDate(date.getDate() - 1)
+               
                 const date_st1 = String(date.getMonth() + 1).padStart(2, '0') + "/" + date.getDate() + "/" + +String(date.getFullYear()).substring(2, 4)
-
+                date.setDate(date.getDate() - 1)
                 onValue(reference, (snapshot) => {
                     snapshot.forEach(child => {
+                        // console.log(date_st)
                         // jobList.push([child.val().Heading, child.val().Description, child.val().Link])
                         // console.log(child.val())
                         // setJobList((jobList) => [...jobList, { heading: child.val().Heading, desc: child.val().Description, link: child.val().Link }])
@@ -35,7 +37,7 @@ export const AppProvider = ({ children }) => {
                     setJobList([...temp])
                     setJobListSmall([...temp].slice(0, jobsToLoad))
                 });
-
+                
             }
 
         }
