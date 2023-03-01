@@ -9,8 +9,10 @@ const default_blog_img = 'https://images.pexels.com/photos/3844790/pexels-photo-
 
 
 const PostCard = ({ props, id }) => {
-
-
+    if(props.desc == null){
+    props.desc = ""
+    }
+    
 
     return (
         <Card component={Link} to={'/post/' + id} sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', textDecoration: 'none', }}>
@@ -26,7 +28,7 @@ const PostCard = ({ props, id }) => {
             <Box sx={{ padding: '0.1rem', display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
 
-                    title={props.heading}
+                    title={props.heading||""}
                     subheader=""
 
                     sx={{
@@ -36,7 +38,7 @@ const PostCard = ({ props, id }) => {
 
                 <CardContent >
                     <Typography variant='caption'>
-                        {props.desc.length > 150 ? props.desc.slice(0, 150) : props.desc}
+                        {props.desc.length > 150 ? props.desc.slice(0, 150) : props.desc||""}
                     </Typography>
                     <Typography variant='caption' color='grey' display='block' textAlign='right'>
                         {new Date(props.date).toDateString()}
